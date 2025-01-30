@@ -1,2 +1,2 @@
 # justXY
- just show map position(XY) 
+ just show map position(XY) for player
