@@ -1,5 +1,6 @@
-local XYFrame = CreateFrame("Frame", nil, nil, "BackdropTemplate")
+local XYFrame = CreateFrame("Frame", nil, Minimap, "BackdropTemplate")
 XYFrame:SetPoint("BOTTOM", Minimap, 0, -25)
+-- XYFrame:SetPoint("TOPLEFT", Minimap, 0, 25)
 XYFrame:SetSize(90, 20)
 XYFrame:SetBackdrop(BACKDROP_TUTORIAL_16_16)
 
@@ -8,26 +9,12 @@ XYText:SetPoint("CENTER")
 XYText:SetTextColor(1, 1, 1, 1)
 XYText:SetFont(STANDARD_TEXT_FONT, 14, "THINOUTLINE")
 XYFrame:SetScript("OnUpdate", function() 
-  --if not IsInInstance() then
-    local p = C_Map.GetBestMapForUnit("player")
-    if not p then
-      XYText:SetText("no player")
-      return
-    end
-    local pos = C_Map.GetPlayerMapPosition(p, "player")
-    if not pos then
-      XYText:SetText("no pos")
-      return
-    end
-
-    if pos.x > 0 or pos.y > 0 then
-      XYText:SetText(string.format("%.2f, %.2f", pos.x*100, pos.y*100))
-    else
-      XYText:SetText("zero xy")
-    end
-  --end    
+  local map = C_Map.GetBestMapForUnit("player")
+  if not map then XYText:SetText("no map") return end
+  local pos = C_Map.GetPlayerMapPosition(map, "player")
+  if not pos then XYText:SetText("no pos") return end
+  XYText:SetText(string.format("%.2f, %.2f", pos.x*100, pos.y*100))
 end)
-
 
 XYFrame:SetScript("OnEnter", function(self, motion) 
   GameTooltip:SetOwner(self, "ANCHOR_TOPRIGHT")
@@ -36,7 +23,6 @@ end)
 XYFrame:SetScript("OnLeave", function(self, motion)
   GameTooltip:Hide()
 end)
-
 
 function coord1()
   print("coord1")
