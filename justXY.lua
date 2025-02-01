@@ -24,10 +24,23 @@ XYFrame:SetScript("OnLeave", function(self, motion)
   GameTooltip:Hide()
 end)
 
-function coord1()
-  print("coord1")
-end
-
 -- register slash for justXY
 SLASH_COORD1 = "/coord"
-SlashCmdList["COORD"] = coord1
+SLASH_COORD2 = "/wp"
+SLASH_COORD3 = "/xy"
+SlashCmdList.COORD = function(msg, editBox)
+  --print("msg="..msg)
+  local x, y = msg:match("^(%S*)%s*(%S*)")
+  x = tonumber(x) or 0
+  y = tonumber(y) or 0
+  if x > 100 then x = 100 elseif x < 0 then x = 0 end
+  if y > 100 then y = 100 elseif y < 0 then y = 0 end
+  --print("x="..x..",y="..y)
+  local map = C_Map.GetBestMapForUnit("player")
+  if map and C_Map.CanSetUserWaypointOnMap(map) then
+    --local pos = C_Map.GetPlayerMapPosition(map, "player")
+    PlaySound(SOUNDKIT.UI_MAP_WAYPOINT_CLICK_TO_PLACE);
+    C_Map.SetUserWaypoint(UiMapPoint.CreateFromCoordinates(map, x/100, y/100))
+    C_SuperTrack.SetSuperTrackedUserWaypoint(true)
+  end
+end
