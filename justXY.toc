@@ -4,13 +4,3 @@
 ## Notes: Just Displaying Map Coords(XY)
 ## Author: Longee
 justXY.lua
-
-# [Interface] 用来指定插件适用的客户端版本，例如"110007" 代表的是客户端版本11.0.7
-# [Title] 插件的名称
-# [Version] 插件的版本号
-# [Notes] 插件的描述
-# [Author] 插件的作者
-# [SavedVariables] 用来设置插件的存档变量
-# [OptionalDeps] 用来设置插件的可选依赖
-# [X-Curse-Project-ID] CurseForge项目ID，不知道从哪里来
-# [X-WOWI-ID] WoWInterface项目ID ... 

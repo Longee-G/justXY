@@ -46,7 +46,7 @@ SlashCmdList.COORD = function(msg, editBox)
   y = tonumber(y)
   if not x or not y then print("<justXY> Invalid coordinates. Numbers required.") return end
   x = math.min(100, math.max(0, x))
-  y = math.min(100, math.max(0, x))
+  y = math.min(100, math.max(0, y))
   --print("x="..x..",y="..y)
   local map = C_Map.GetBestMapForUnit("player")
   if map and C_Map.CanSetUserWaypointOnMap(map) then
