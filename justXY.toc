@@ -4,3 +4,4 @@
 ## Notes: Just Displaying Map Coords(XY)
 ## Author: Longee
 justXY.lua
+justRecipeTransmog.lua
