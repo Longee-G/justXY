@@ -1,4 +1,4 @@
-## Interface: 110007
+## Interface: 110007, 110100, 110105
 ## Title: justXY
 ## Version: 0.0.1
 ## Notes: Just Displaying Map Coords(XY)
